@@ -43,9 +43,19 @@ function isCurrent(coordinate){
 }
 
 // Challenge 6
-function lightRow(row){
-  y = getYIndex(row);
+function lightRow(number){
+  y = getYIndex(number);
   return GRID[y];
+}
+
+// Challenge 7
+function lightColumn(letter){
+  x = getXIndex(letter.toLowerCase());
+  col = [];
+  GRID.forEach(function(element){
+    col.push(element[x]);
+  });
+  return col;
 }
 
 // Helper functions (Challenge 3)
