@@ -64,7 +64,7 @@ function getLetter(coordinate){
 }
 
 function getNumber(coordinate){
-  return coordinate[1];
+  return coordinate.substring(1, coordinate.length-1);
 }
 
 function getXIndex(letter){
@@ -74,3 +74,21 @@ function getXIndex(letter){
 function getYIndex(number){
   return number-1;
 }
+
+
+
+// // // // //
+const GRID = [
+  ["", "", "", "^", "", "", "", "", "", ""],
+  ["", "", "", "", "~", "", "", "", "", ""],
+  ["", "", "", "", "^", "^", "", "", "", ""],
+  ["", "", "", "", "^", "^", "", "", "", ""],
+  ["", "", "", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", "", "", ""],
+  ["", "^", "~", "~", "", "", "", "^", "", ""],
+  ["", "^", "", "~", "~", "", "", "", "", ""],
+  ["", "^", "", "", "~", "~", "", "", "", ""],
+];
+
+Console.log(lightCell('A10'))
