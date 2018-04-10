@@ -41,6 +41,16 @@ function lightCell(coordinate){
   return false;
 }
 
+// Challenge 9
+function isSafe(coordinate){
+  letter = getLetter(coordinate);
+  number = getNumber(coordinate);
+  x = getXIndex(letter);
+  y = getYIndex(number);
+
+  return (GRID[y][x] === '') ? true : false;
+}
+
 // Challenge 4
 function isRock(coordinate){
   letter = getLetter(coordinate);
