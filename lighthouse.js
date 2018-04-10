@@ -32,10 +32,13 @@ function totalCells(){
 function lightCell(coordinate){
   letter = getLetter(coordinate);
   number = getNumber(coordinate);
-  x = getXIndex(letter);
-  y = getYIndex(number);
 
-  return (GRID[y])[x];
+  if (isValidLetter(letter) && isValidNumber(number)){
+    x = getXIndex(letter);
+    y = getYIndex(number);
+    return (GRID[y])[x];
+  }
+  return false;
 }
 
 // Challenge 4
@@ -90,3 +93,27 @@ function getXIndex(letter){
 function getYIndex(number){
   return number-1;
 }
+
+// Challenge 8
+function isValidLetter(letter){
+  asciiLetterValue = letter.charCodeAt(0);
+  if (asciiLetterValue < firstColumn || asciiLetterValue > lastColumn)
+    return false;
+  return true;
+}
+
+// Challenge 8
+function isValidNumber(number){
+  if (number < 0 || number > height)
+    return false;
+  return true;
+}
+
+
+// Examples
+
+console.log(lightCell("Z1"));
+console.log(lightCell("C10"));
+console.log(lightCell("D12"));
+console.log(lightCell("E10"));
+console.log(lightCell("F10"));
