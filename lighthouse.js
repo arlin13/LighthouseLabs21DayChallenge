@@ -1,14 +1,30 @@
+const GRID = [
+  ["", "", "", "^", "", "", "", "", "", ""],
+  ["", "", "", "", "~", "", "", "", "", ""],
+  ["", "", "", "", "^", "^", "", "", "", ""],
+  ["", "", "", "", "^", "^", "", "", "", ""],
+  ["", "", "", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", "", "", ""],
+  ["", "", "", "", "", "", "", "", "", ""],
+  ["", "^", "~", "~", "", "", "", "^", "", ""],
+  ["", "^", "", "~", "~", "", "", "", "", ""],
+  ["", "^", "", "", "~", "~", "", "", "", ""],
+];
+
+firstColumn = 97; // 'a'
+lastColumn = 97 + GRID[0].length - 1;
+
+height = GRID.length;
+width = GRID[0].length;
+
+
 // Challenge 1
 function gridSize(){
-  height = GRID.length;
-  width = GRID[0].length;
   return (width.toString() + " x " + height.toString());
 }
 
 // Challenge 2
 function totalCells(){
-  height = GRID.length;
-  width = GRID[0].length;
   return height * width;
 }
 
