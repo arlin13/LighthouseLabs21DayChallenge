@@ -10,14 +10,12 @@ const GRID = [
   ["", "^", "", "~", "~", "", "", "", "", ""],
   ["", "^", "", "", "~", "~", "", "", "", ""],
 ];
-
-firstColumn = 97; // 'a'
-lastColumn = 97 + GRID[0].length - 1;
+firstColumn = 65; // 'A'
+lastColumn = firstColumn + GRID[0].length - 1;
 
 height = GRID.length;
 width = GRID[0].length;
-
-
+  
 // Challenge 1
 function gridSize(){
   return (width.toString() + " x " + height.toString());
@@ -30,21 +28,34 @@ function totalCells(){
 
 // Challenge 3
 function lightCell(coordinate){
-  letter = getLetter(coordinate);
-  number = getNumber(coordinate);
-
+  letter = getLetterFromCoordinate(coordinate);
+  number = getNumberFromCoordinate(coordinate);
+  
   if (isValidLetter(letter) && isValidNumber(number)){
     x = getXIndex(letter);
     y = getYIndex(number);
+
     return (GRID[y])[x];
   }
   return false;
 }
 
+// Challenge 8
+function isValidLetter(letter){
+  if (letter.charCodeAt(0) < firstColumn || letter.charCodeAt(0) > lastColumn)
+    return false;
+  return true;
+}
+function isValidNumber(number){
+  if (number < 0 || number > height)
+    return false;
+  return true;
+}
+
 // Challenge 9
 function isSafe(coordinate){
-  letter = getLetter(coordinate);
-  number = getNumber(coordinate);
+  letter = getLetterFromCoordinate(coordinate);
+  number = getNumberFromCoordinate(coordinate);
   x = getXIndex(letter);
   y = getYIndex(number);
 
@@ -53,8 +64,8 @@ function isSafe(coordinate){
 
 // Challenge 4
 function isRock(coordinate){
-  letter = getLetter(coordinate);
-  number = getNumber(coordinate);
+  letter = getLetterFromCoordinate(coordinate);
+  number = getNumberFromCoordinate(coordinate);
   x = getXIndex(letter);
   y = getYIndex(number);
 
@@ -63,10 +74,10 @@ function isRock(coordinate){
 
 // Challenge 5
 function isCurrent(coordinate){
-  letter = getLetter(coordinate);
-  number = getNumber(coordinate);
-  x = getXIndex(letter)
-  y = getYIndex(number)
+  letter = getLetterFromCoordinate(coordinate);
+  number = getNumberFromCoordinate(coordinate);
+  x = getXIndex(letter);
+  y = getYIndex(number);
 
   return (GRID[y][x] == '~')
 }
@@ -79,7 +90,7 @@ function lightRow(number){
 
 // Challenge 7
 function lightColumn(letter){
-  x = getXIndex(letter.toLowerCase());
+  x = getXIndex(letter.toUpperCase());
   col = [];
   GRID.forEach(function(element){
     col.push(element[x]);
@@ -87,36 +98,49 @@ function lightColumn(letter){
   return col;
 }
 
-// Helper functions (Challenge 3)
-function getLetter(coordinate){
-  return coordinate[0].toLowerCase();
+// Challenge 10
+function allRocks(){
+  allRocksList = [];
+  for(var i=0; i<GRID.length; i++){
+    for(var j=0; j<GRID[i].length; j++){
+      if (GRID[i][j] == '^'){
+      	coordinate = getCoordinateFromArray(i,j);
+        allRocksList.push(coordinate);
+      }
+    }
+  }
+  return allRocksList;
 }
 
-function getNumber(coordinate){
+// Helper functions (Challenge 3)
+function getLetterFromCoordinate(coordinate){
+  return coordinate[0].toUpperCase();
+}
+
+function getNumberFromCoordinate(coordinate){
   return coordinate.substring(1, coordinate.length);
 }
 
 function getXIndex(letter){
-  return letter.charCodeAt(0) - 97;
+  return letter.charCodeAt(0) - firstColumn;
 }
 
 function getYIndex(number){
   return number-1;
 }
 
-// Challenge 8
-function isValidLetter(letter){
-  asciiLetterValue = letter.charCodeAt(0);
-  if (asciiLetterValue < firstColumn || asciiLetterValue > lastColumn)
-    return false;
-  return true;
+function getCoordinateFromArray(row, column){ // (3,9)
+  coordinate = getColumn(column) + getRow(row);
+  return coordinate;
 }
 
-// Challenge 8
-function isValidNumber(number){
-  if (number < 0 || number > height)
-    return false;
-  return true;
+function getRow(row){
+  return (row+1).toString();
+}
+
+function getColumn(column){
+  asciiLetter = column + firstColumn;
+  return String.fromCharCode(asciiLetter);
 }
 
 
@@ -127,3 +151,4 @@ console.log(lightCell("C10"));
 console.log(lightCell("D12"));
 console.log(lightCell("E10"));
 console.log(lightCell("F10"));
+console.log(allRocks());
