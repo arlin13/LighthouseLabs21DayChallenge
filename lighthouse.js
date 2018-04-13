@@ -112,6 +112,20 @@ function allRocks(){
   return allRocksList;
 }
 
+// Challenge 11
+function allCurrents(){
+  allCurrentsList = [];
+  for (var i=0; i<height; i++){
+    for (var j=0; j<GRID[i].length; j++){
+      if (GRID[i][j] == '~'){
+        coordinate = getCoordinateFromArray(i,j);
+        allCurrentsList.push(coordinate);
+      }
+    }
+  }
+  return allCurrentsList;
+}
+
 // Helper functions (Challenge 3)
 function getLetterFromCoordinate(coordinate){
   return coordinate[0].toUpperCase();
