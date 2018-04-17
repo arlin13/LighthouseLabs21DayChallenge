@@ -126,6 +126,26 @@ function allCurrents(){
   return allCurrentsList;
 }
 
+// Challenge 12
+function firstRock(){
+  for(var i=0; i<height; i++){
+    for(var j=0; j<GRID[i].length; j++){
+      if (GRID[i][j] == '^')
+      	return getCoordinateFromArray(i,j);
+    }
+  }
+}
+
+// Challenge 13
+function firstCurrent(){
+  for(var i=0; i<height; i++){
+    for(var j=0; j<GRID[i].length; j++){
+      if (GRID[i][j] == '~')
+      	return getCoordinateFromArray(i,j);
+    }
+  }
+}
+
 // Helper functions (Challenge 3)
 function getLetterFromCoordinate(coordinate){
   return coordinate[0].toUpperCase();
