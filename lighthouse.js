@@ -200,3 +200,6 @@ console.log(lightCell("D12"));
 console.log(lightCell("E10"));
 console.log(lightCell("F10"));
 console.log(allRocks());
+console.log(isRock("C8"));
+console.log(isRock("C8"));
+console.log(isRock("B1"));
