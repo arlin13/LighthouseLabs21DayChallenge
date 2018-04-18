@@ -10,6 +10,7 @@ const GRID = [
   ["", "^", "", "~", "~", "", "", "", "", ""],
   ["", "^", "", "", "~", "~", "", "", "", ""],
 ];
+
 firstColumn = 65; // 'A'
 lastColumn = firstColumn + GRID[0].length - 1;
 
@@ -35,9 +36,13 @@ function lightCell(coordinate){
     x = getXIndex(letter);
     y = getYIndex(number);
 
-    return (GRID[y])[x];
+    //return (GRID[y])[x];
+    return lightCell(x,y);
   }
   return false;
+}
+function lightCell(x,y){
+  return GRID[y][x];
 }
 
 // Challenge 8
@@ -59,6 +64,9 @@ function isSafe(coordinate){
   x = getXIndex(letter);
   y = getYIndex(number);
 
+  return isSafe(x,y);
+}
+function isSafe(x,y){
   return (GRID[y][x] === '') ? true : false;
 }
 
@@ -69,7 +77,10 @@ function isRock(coordinate){
   x = getXIndex(letter);
   y = getYIndex(number);
 
-  return (GRID[y][x] == '^')
+  return isRock(x,y);
+}
+function isRock(x,y){
+  return GRID[y][x] == '^';
 }
 
 // Challenge 5
@@ -79,7 +90,10 @@ function isCurrent(coordinate){
   x = getXIndex(letter);
   y = getYIndex(number);
 
-  return (GRID[y][x] == '~')
+  return isCurrent(x,y);
+}
+function isCurrent(x,y){
+  return GRID[y][x] === '~';
 }
 
 // Challenge 6
