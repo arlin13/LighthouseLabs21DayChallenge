@@ -193,6 +193,35 @@ function isDangerousFromCoordinate(coordinate){
   return false;
 }
 
+// Challenge 15
+function distressBeaconFromCoordinate(coordinate){
+  letter = getLetterFromCoordinate(coordinate);
+  number = getNumberFromCoordinate(coordinate);  
+  x = getXIndex(letter);
+  y = getYIndex(number);
+  
+  // check cell to the right
+  if (x < width-1){
+    if (isSafe(x+1,y))
+      return getCoordinateFromArray(y, x+1);
+  }
+  // check cell below
+  if (y < height-1){
+    if (isSafe(x,y+1))
+      return getCoordinateFromArray(y+1, x);
+  }
+  // check cell to the left
+  if (x > 0){
+    if (isSafe(x-1,y))
+      return getCoordinateFromArray(y, x-1);
+  }
+  // check cell above
+  if (y > 0){
+    if (isSafe(x,y-1))
+      return getCoordinateFromArray(y-1, x);
+  }
+}
+
 // Helper functions (Challenge 3)
 function getLetterFromCoordinate(coordinate){
   return coordinate[0].toUpperCase();
@@ -238,38 +267,49 @@ function getColumn(column){
 // console.log(isRockFromCoordinate("B1"));
 // console.log(isRockFromCoordinate("F4"));
 
-console.log("Is 'A1' dangerous? " + isDangerousFromCoordinate("A1"));
-console.log("Is 'A2' dangerous? " + isDangerousFromCoordinate("A2"));
-console.log("Is 'A3' dangerous? " + isDangerousFromCoordinate("A3"));
-console.log("Is 'A4' dangerous? " + isDangerousFromCoordinate("A4"));
-console.log("Is 'A5' dangerous? " + isDangerousFromCoordinate("A5"));
-console.log("Is 'A6' dangerous? " + isDangerousFromCoordinate("A6"));
-console.log("Is 'A7' dangerous? " + isDangerousFromCoordinate("A7"));
-console.log("Is 'A8' dangerous? " + isDangerousFromCoordinate("A8"));
-console.log("Is 'A9' dangerous? " + isDangerousFromCoordinate("A9"));
-console.log("Is 'A10' dangerous? " + isDangerousFromCoordinate("A10"));
+// console.log("Is 'A1' dangerous? " + isDangerousFromCoordinate("A1"));
+// console.log("Is 'A2' dangerous? " + isDangerousFromCoordinate("A2"));
+// console.log("Is 'A3' dangerous? " + isDangerousFromCoordinate("A3"));
+// console.log("Is 'A4' dangerous? " + isDangerousFromCoordinate("A4"));
+// console.log("Is 'A5' dangerous? " + isDangerousFromCoordinate("A5"));
+// console.log("Is 'A6' dangerous? " + isDangerousFromCoordinate("A6"));
+// console.log("Is 'A7' dangerous? " + isDangerousFromCoordinate("A7"));
+// console.log("Is 'A8' dangerous? " + isDangerousFromCoordinate("A8"));
+// console.log("Is 'A9' dangerous? " + isDangerousFromCoordinate("A9"));
+// console.log("Is 'A10' dangerous? " + isDangerousFromCoordinate("A10"));
 
-console.log("Is 'B1' dangerous? " + isDangerousFromCoordinate("B1"));
-console.log("Is 'B2' dangerous? " + isDangerousFromCoordinate("B2"));
-console.log("Is 'B3' dangerous? " + isDangerousFromCoordinate("B3"));
-console.log("Is 'B4' dangerous? " + isDangerousFromCoordinate("B4"));
-console.log("Is 'B5' dangerous? " + isDangerousFromCoordinate("B5"));
-console.log("Is 'B6' dangerous? " + isDangerousFromCoordinate("B6"));
-console.log("Is 'B7' dangerous? " + isDangerousFromCoordinate("B7"));
-console.log("Is 'B8' dangerous? " + isDangerousFromCoordinate("B8"));
-console.log("Is 'B9' dangerous? " + isDangerousFromCoordinate("B9"));
-console.log("Is 'B10' dangerous? " + isDangerousFromCoordinate("B10"));
+// console.log("Is 'B1' dangerous? " + isDangerousFromCoordinate("B1"));
+// console.log("Is 'B2' dangerous? " + isDangerousFromCoordinate("B2"));
+// console.log("Is 'B3' dangerous? " + isDangerousFromCoordinate("B3"));
+// console.log("Is 'B4' dangerous? " + isDangerousFromCoordinate("B4"));
+// console.log("Is 'B5' dangerous? " + isDangerousFromCoordinate("B5"));
+// console.log("Is 'B6' dangerous? " + isDangerousFromCoordinate("B6"));
+// console.log("Is 'B7' dangerous? " + isDangerousFromCoordinate("B7"));
+// console.log("Is 'B8' dangerous? " + isDangerousFromCoordinate("B8"));
+// console.log("Is 'B9' dangerous? " + isDangerousFromCoordinate("B9"));
+// console.log("Is 'B10' dangerous? " + isDangerousFromCoordinate("B10"));
 
 
-console.log("Is 'D1' dangerous? " + isDangerousFromCoordinate("D1"));
-console.log("Is 'D2' dangerous? " + isDangerousFromCoordinate("D2"));
-console.log("Is 'D3' dangerous? " + isDangerousFromCoordinate("D3"));
-console.log("Is 'D4' dangerous? " + isDangerousFromCoordinate("D4"));
-console.log("Is 'D5' dangerous? " + isDangerousFromCoordinate("D5"));
-console.log("Is 'D6' dangerous? " + isDangerousFromCoordinate("D6"));
-console.log("Is 'D7' dangerous? " + isDangerousFromCoordinate("D7"));
-console.log("Is 'D8' dangerous? " + isDangerousFromCoordinate("D8"));
-console.log("Is 'D9' dangerous? " + isDangerousFromCoordinate("D9"));
-console.log("Is 'D10' dangerous? " + isDangerousFromCoordinate("D10"));
+// console.log("Is 'D1' dangerous? " + isDangerousFromCoordinate("D1"));
+// console.log("Is 'D2' dangerous? " + isDangerousFromCoordinate("D2"));
+// console.log("Is 'D3' dangerous? " + isDangerousFromCoordinate("D3"));
+// console.log("Is 'D4' dangerous? " + isDangerousFromCoordinate("D4"));
+// console.log("Is 'D5' dangerous? " + isDangerousFromCoordinate("D5"));
+// console.log("Is 'D6' dangerous? " + isDangerousFromCoordinate("D6"));
+// console.log("Is 'D7' dangerous? " + isDangerousFromCoordinate("D7"));
+// console.log("Is 'D8' dangerous? " + isDangerousFromCoordinate("D8"));
+// console.log("Is 'D9' dangerous? " + isDangerousFromCoordinate("D9"));
+// console.log("Is 'D10' dangerous? " + isDangerousFromCoordinate("D10"));
+
+
+console.log(distressBeaconFromCoordinate("E8"));
+console.log(distressBeaconFromCoordinate("F8"));
+console.log(distressBeaconFromCoordinate("G8"));
+console.log(distressBeaconFromCoordinate("G9"));
+console.log(distressBeaconFromCoordinate("H9"));
+console.log(distressBeaconFromCoordinate("I9"));
+console.log(distressBeaconFromCoordinate("J9"));
+console.log(distressBeaconFromCoordinate("J10"));
+
 // console.log(isDangerousFromCoordinate("B9"));
 // console.log(isDangerousFromCoordinate("I6"));
